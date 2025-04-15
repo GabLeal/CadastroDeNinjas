@@ -2,11 +2,17 @@ package dev.leal.cadastroDeNinjas.Missions;
 
 import dev.leal.cadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_mission")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MissionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,27 +22,4 @@ public class MissionModel {
 
     @OneToMany(mappedBy = "mission")
     private List<NinjaModel> ninjas;
-
-
-    public MissionModel(String name, String rank) {
-        this.name = name;
-        this.rank = rank;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getRank() {
-        return rank;
-    }
-
-    public void setRank(String rank) {
-        this.rank = rank;
-    }
-
 }
