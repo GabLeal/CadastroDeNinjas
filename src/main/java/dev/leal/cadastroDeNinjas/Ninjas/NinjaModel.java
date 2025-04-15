@@ -3,8 +3,6 @@ package dev.leal.cadastroDeNinjas.Ninjas;
 import dev.leal.cadastroDeNinjas.Missions.MissionModel;
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tb_ninja")
 public class NinjaModel {
