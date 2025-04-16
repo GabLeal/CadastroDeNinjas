@@ -19,6 +19,8 @@ public class NinjaModel {
     @Column(unique = true)
     private String email;
     private int age;
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "mission_id")
