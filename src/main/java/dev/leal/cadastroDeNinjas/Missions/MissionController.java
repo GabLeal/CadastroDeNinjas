@@ -3,7 +3,7 @@ package dev.leal.cadastroDeNinjas.Missions;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("mission")
+@RequestMapping("/mission")
 public class MissionController {
 
     @PostMapping("/create")
