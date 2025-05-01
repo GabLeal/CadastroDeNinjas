@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/ninja")
 public class NinjaController {
@@ -26,12 +29,14 @@ public class NinjaController {
     }
 
     @GetMapping("/findAll")
-    public String fingAll(){
-        return "listar ninjas";
+    public ResponseEntity<List<NinjaModel>> findAll(){
+        List<NinjaModel> allNinjas = service.findAll();
+        return ResponseEntity.ok(allNinjas);
     }
-    @GetMapping("/findAllID")
-    public String fingById(){
-        return "listar ninjas por id";
+    @GetMapping("/findAll/{id}")
+    public ResponseEntity<Optional<NinjaModel>> findById(@PathVariable("id") Long id){
+        Optional<NinjaModel> ninja = service.findById(id);
+        return ResponseEntity.ok(ninja);
     }
 
     @PutMapping("/updateID")
