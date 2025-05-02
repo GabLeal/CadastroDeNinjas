@@ -26,4 +26,9 @@ public class NinjaService {
         return  repository.findById(id);
     }
 
+    Optional<NinjaModel> delete(Long id){
+        Optional<NinjaModel> ninja = repository.findById(id);
+        if(ninja.isPresent()) repository.deleteById(id);
+        return ninja;
+    }
 }

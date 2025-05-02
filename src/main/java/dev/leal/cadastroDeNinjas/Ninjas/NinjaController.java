@@ -44,8 +44,9 @@ public class NinjaController {
         return "Atualizar ninja";
     }
 
-    @DeleteMapping("/delete")
-    public String delete(){
-        return "apagar ninja";
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Optional<NinjaModel>> delete(@PathVariable("id") Long id){
+        Optional<NinjaModel> ninja = service.delete(id);
+        return ResponseEntity.ok(ninja);
     }
 }
