@@ -1,14 +1,22 @@
 package dev.leal.cadastroDeNinjas.Missions;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/mission")
 public class MissionController {
 
+    private final MissionService service;
+
+    MissionController(MissionService service){
+        this.service = service;
+    }
+
     @PostMapping("/create")
-    public String create(){
-        return "criar missao";
+    public ResponseEntity<MissionModel> create(@RequestBody MissionModel mission){
+        MissionModel newMission = service.create(mission);
+        return ResponseEntity.ok(newMission);
     }
     @GetMapping("/findAll")
     public String fingAll(){
