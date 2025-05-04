@@ -1,5 +1,6 @@
 package dev.leal.cadastroDeNinjas.Missions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.leal.cadastroDeNinjas.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,7 @@ public class MissionModel {
     private String name;
     private String rank;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "mission")
     private List<NinjaModel> ninjas;
 }
