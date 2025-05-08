@@ -23,19 +23,19 @@ public class NinjaController {
     }
 
     @PostMapping(value = "/create", produces = "application/json")
-    public ResponseEntity<NinjaModel> create(@RequestBody NinjaModel ninja){
-        final NinjaModel newNinja = service.createNinja(ninja);
+    public ResponseEntity<NinjaDTO> create(@RequestBody NinjaDTO ninja){
+        final NinjaDTO newNinja = service.createNinja(ninja);
         return ResponseEntity.ok(newNinja);
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<NinjaModel>> findAll(){
-        List<NinjaModel> allNinjas = service.findAll();
+    public ResponseEntity<List<NinjaDTO>> findAll(){
+        List<NinjaDTO> allNinjas = service.findAll();
         return ResponseEntity.ok(allNinjas);
     }
     @GetMapping("/findAll/{id}")
-    public ResponseEntity<Optional<NinjaModel>> findById(@PathVariable("id") Long id){
-        Optional<NinjaModel> ninja = service.findById(id);
+    public ResponseEntity<Optional<NinjaDTO>> findById(@PathVariable("id") Long id){
+        Optional<NinjaDTO> ninja = service.findById(id);
         return ResponseEntity.ok(ninja);
     }
 
@@ -45,8 +45,8 @@ public class NinjaController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Optional<NinjaModel>> delete(@PathVariable("id") Long id){
-        Optional<NinjaModel> ninja = service.delete(id);
+    public ResponseEntity<Optional<NinjaDTO>> delete(@PathVariable("id") Long id){
+        Optional<NinjaDTO> ninja = service.delete(id);
         return ResponseEntity.ok(ninja);
     }
 }
