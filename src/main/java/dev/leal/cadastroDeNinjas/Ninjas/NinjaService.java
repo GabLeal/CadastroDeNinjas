@@ -37,4 +37,14 @@ public class NinjaService {
         if(ninja.isPresent()) repository.deleteById(id);
         return ninja;
     }
+
+    Optional<NinjaDTO> update(Long id, NinjaDTO ninja){
+        boolean hasNinja = repository.existsById(id);
+        if(!hasNinja) return Optional.empty();
+
+        NinjaModel ninjaModel = ninjaMapper.map(ninja);
+        ninjaModel.setId(id);
+        ninjaModel = repository.save(ninjaModel);
+        return Optional.of(ninjaMapper.map(ninjaModel)) ;
+    }
 }

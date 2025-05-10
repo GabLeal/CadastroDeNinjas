@@ -39,9 +39,10 @@ public class NinjaController {
         return ResponseEntity.ok(ninja);
     }
 
-    @PutMapping("/updateID")
-    public String update(){
-        return "Atualizar ninja";
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Optional<NinjaDTO>> update(@PathVariable Long id, @RequestBody NinjaDTO ninja){
+        Optional<NinjaDTO> updatedNinja = service.update(id, ninja);
+        return  ResponseEntity.ok(updatedNinja);
     }
 
     @DeleteMapping("/delete/{id}")
